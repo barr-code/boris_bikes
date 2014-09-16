@@ -23,7 +23,8 @@ module BikeContainer
 		bikes << bike
 	end
 
-	def release(bike)
+	def release(bike = :bike)
+		raise 'There are no bikes in this holder.' if bikes.empty?
 		bikes.delete(bike)
 	end
 
