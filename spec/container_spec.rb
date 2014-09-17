@@ -43,6 +43,14 @@ describe BikeContainer do
 		expect(lambda {holder.dock(:bike)}).to raise_error(RuntimeError)
 	end
 
+
+	it "should release without an argument" do
+		expect(holder.bike_count).to eq(0)
+		holder.dock(bike)
+		holder.release
+		expect(holder.bike_count).to eq(0)
+	end
+
 	it "should know which bikes are available" do
 		working_bike, broken_bike = Bike.new, Bike.new
 		broken_bike.break!
