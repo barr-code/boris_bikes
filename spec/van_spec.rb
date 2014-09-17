@@ -28,8 +28,11 @@ describe Van do
 		broken_bike.break!
 		van.dock(broken_bike)
 		expect(van.bike_count).to eq(1)
-		van.release_to_garage
+		van.release_broken_bikes
 		expect(van.bike_count).to eq(0)
+	end
+
+	it "should accept fixed bikes from the garage" do
 	end
 
 	it "should release working bikes to the docking station" do

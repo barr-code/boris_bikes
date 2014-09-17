@@ -4,6 +4,7 @@ describe DockingStation do
 
 	let(:station) {DockingStation.new(:capacity => 20)}
 	let(:van) {Van.new(:capacity => 20)}
+	let(:bike) {Bike.new}
 
 	it "should allow setting default capacity" do
 		expect(station.capacity).to eq(20)
@@ -24,7 +25,7 @@ describe DockingStation do
 		broken_bike = Bike.new
 		broken_bike.break!
 		station.dock(broken_bike)
-		station.release_to_van
+		station.release_broken_bikes
 		expect(station.bike_count).to eq(0)
 	end
 
