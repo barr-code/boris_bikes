@@ -17,6 +17,5 @@ describe DockingStation do
 		expect(station.available_bikes).to be_empty
 		expect(station).not_to have_rentals
 	end
-
 	
 end
