@@ -3,6 +3,7 @@ require 'Docking_Station'
 describe DockingStation do
 
 	let(:station) {DockingStation.new(:capacity => 20)}
+	let(:van) {Van.new(:capacity => 20)}
 
 	it "should allow setting default capacity" do
 		expect(station.capacity).to eq(20)
@@ -26,5 +27,14 @@ describe DockingStation do
 		station.release_to_van
 		expect(station.bike_count).to eq(0)
 	end
+
+	it "should accept working bikes from the van" do
+		expect(station.bike_count).to eq(0)
+		van.dock(Bike.new)
+		station.dock(van.release)
+		expect(station.bike_count).to eq(1)
+	end
+
+
 	
 end

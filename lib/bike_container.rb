@@ -13,7 +13,8 @@ module BikeContainer
 	def capacity=(value)
 		@capacity = value
 	end
-
+ # Even though bike_count is not strictly necessary,
+ # We have decided to keep it because it is more concise than using available_bikes.count + broken_bikes.count
 	def bike_count
 		bikes.count
 	end
