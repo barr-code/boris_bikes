@@ -20,7 +20,7 @@ module BikeContainer
 
 	def dock(bike)
 		raise 'There is no more room for bikes.' if full?
-		raise 'That is not a bike. Please only dock bikes.' if bike.class != Bike
+		raise 'That is not a bike. Please only dock bikes.' unless bike.class == Bike
 		bikes << bike
 	end
 
