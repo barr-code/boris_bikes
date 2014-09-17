@@ -1,10 +1,12 @@
 require 'van'
 require 'bike'
+require 'garage'
 
 describe Van do
 	let(:van) {Van.new(:capacity => 20)}
 	let(:bike) {Bike.new}
 	let(:station) {DockingStation.new(:capacity => 20)}
+	let(:garage) {Garage.new(:capacity => 20)}
 
 
 	it "should allow us to set a capacity" do
@@ -33,6 +35,14 @@ describe Van do
 	end
 
 	it "should accept fixed bikes from the garage" do
+		bike_1, bike_2, bike_3 = Bike.new, Bike.new, Bike.new
+		garage.dock(bike_1)
+		garage.dock(bike_2)
+		garage.dock(bike_3)
+		expect(van.bike_count).to eq(0)
+		expect(garage.bike_count).to eq(3)
+		van.accept_fixed_bikes(garage)
+		expect(van.bike_count).to eq(3)
 	end
 
 	it "should release working bikes to the docking station" do

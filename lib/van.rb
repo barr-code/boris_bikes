@@ -18,6 +18,9 @@ class Van
 		bikes << station.release_broken_bikes until station.broken_bikes == []
 	end
 
+	def accept_fixed_bikes(garage)
+		bikes << garage.release until garage.available_bikes == []
+	end
 
 
 end

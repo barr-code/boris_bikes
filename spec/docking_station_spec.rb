@@ -32,8 +32,9 @@ describe DockingStation do
 	it "should accept working bikes from the van" do
 		expect(station.bike_count).to eq(0)
 		van.dock(Bike.new)
-		station.dock(van.release)
-		expect(station.bike_count).to eq(1)
+		van.dock(Bike.new)
+		station.accept_fixed_bikes(van)
+		expect(station.bike_count).to eq(2)
 	end
 
 
