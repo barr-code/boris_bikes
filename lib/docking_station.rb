@@ -21,7 +21,7 @@ class DockingStation
 	end
 
 	def accept_fixed_bikes(van)
-		bikes << van.release until van.available_bikes == []
+		bikes << van.release until van.available_bikes.empty?
 	end
 
 end

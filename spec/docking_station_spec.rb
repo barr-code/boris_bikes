@@ -20,15 +20,6 @@ describe DockingStation do
 		expect(station).not_to have_rentals
 	end
 
-	it "should release broken bikes" do
-		expect(station.bike_count).to eq(0)
-		broken_bike = Bike.new
-		broken_bike.break!
-		station.dock(broken_bike)
-		station.release_broken_bikes
-		expect(station.bike_count).to eq(0)
-	end
-
 	it "should accept working bikes from the van" do
 		expect(station.bike_count).to eq(0)
 		van.dock(Bike.new)
