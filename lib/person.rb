@@ -1,10 +1,17 @@
+require_relative 'bike'
+require_relative 'docking_station'
+
 class Person
 
-	def initialize
-		@bike = false
+	def initialize(bike=nil)
+		@bike = bike
 	end
 
 	def has_bike?
-		@bike == true
+		@bike != nil
+	end
+
+	def rent_bike_from(station)
+		@bike = station.release
 	end
 end
