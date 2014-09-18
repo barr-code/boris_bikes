@@ -27,7 +27,4 @@ describe DockingStation do
 		station.accept_fixed_bikes(van)
 		expect(station.bike_count).to eq(2)
 	end
-
-
-	
 end

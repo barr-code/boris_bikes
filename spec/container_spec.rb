@@ -67,4 +67,14 @@ describe BikeContainer do
 		expect(holder.broken_bikes).to eq([broken_bike])
 	end
 
+	it "should resort to default capacity if capacity entered isn't a number" do
+		holder.capacity="dog"
+		expect(holder.capacity).to eq(10)
+	end
+
+	it "shouldn't have a negative capacity" do
+		holder.capacity= -1
+		expect(holder.capacity).to eq(10)
+	end
+
 end
