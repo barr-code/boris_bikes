@@ -6,16 +6,17 @@ module BikeContainer
 		@bikes ||= []
 	end
 
+	def integer(value)
+		return true if value.is_a? Integer
+	end
+
+	def positive(number)
+		return true if number >= 0
+	end
+
 	def capacity
-		if @capacity.is_a? Integer
-			if @capacity >= 0
-				@capacity
-			else
-				@capacity = DEFAULT_CAPACITY
-			end
-		else
-			@capacity = DEFAULT_CAPACITY
-		end
+		@capacity = DEFAULT_CAPACITY unless integer(@capacity) && positive(@capacity)
+		@capacity
 	end
 
 	def capacity=(value)
@@ -29,7 +30,7 @@ module BikeContainer
 
 	def dock(bike)
 		raise 'There is no more room for bikes.' if full?
-		raise 'That is not a bike. Please only dock bikes.' unless bike.class == Bike
+		raise 'Fuck off with your #{bike}. Only dock bikes here.' unless bike.class == Bike
 		bikes << bike
 	end
 

@@ -11,6 +11,7 @@ class Garage
 	end
 
 	def accept_broken_bikes(van)
+		raise 'The garage is full!' if full?
 		bikes << van.release_broken_bikes until van.broken_bikes == []
 		bikes.each {|bike| bike.fix!}
 	end

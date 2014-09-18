@@ -2,12 +2,12 @@ require 'Docking_Station'
 
 describe DockingStation do
 
-	let(:station) {DockingStation.new(:capacity => 20)}
-	let(:van) {Van.new(:capacity => 20)}
+	let(:station) {DockingStation.new(:capacity => 10)}
+	let(:van) {Van.new(:capacity => 10)}
 	let(:bike) {Bike.new}
 
 	it "should allow setting default capacity" do
-		expect(station.capacity).to eq(20)
+		expect(station.capacity).to eq(10)
 	end
 
 	it "should know when there are no bikes" do
@@ -27,4 +27,11 @@ describe DockingStation do
 		station.accept_fixed_bikes(van)
 		expect(station.bike_count).to eq(2)
 	end
+
+	it "should not accept fixed bikes if full" do
+		10.times {station.dock(bike)}
+		10.times {van.dock(bike)}
+		expect(lambda {station.accept_fixed_bikes(van)}).to raise_error(RuntimeError)
+	end
+
 end
