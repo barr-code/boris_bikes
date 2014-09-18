@@ -19,4 +19,9 @@ class Person
 		station.dock(@bike)
 		@bike = nil
 	end
+
+	def crash(bike)
+		@bike.break!
+	end
+
 end

@@ -23,5 +23,12 @@ describe Person do
 		expect(station.bike_count).to eq(1)
 		expect(person).not_to have_bike
 	end
+
+	it "should break the bike if it crashes" do
+		station.dock(bike)
+		person.rent_bike_from(station)
+		person.crash(bike)
+		expect(bike).to be_broken
+	end
 	
 end
